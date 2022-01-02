@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style type="text/css">
+		canvas {
+			background-color: black;
+			width: 100%;
+			height: 100%;
+		}
+
+		body, html {
+			width: 100%;
+			height: 100%;
+           margin: 0px;
+		}
+	</style>
+
+
+
+
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+
+
+            var circles = [];
+            
+	function onKeyDown(event) {
+		
+        var max_point = new Point(view.size.width, view.size.height);
+        var random_point = Point.random();
+        var point = max_point * random_point;
+
+        var newCircle = new Path.Circle(new Point(point, point), 100);
+        newCircle.fillColor = "orange";
+        circles[newCircle];
+}
+function onFrame(event){    
+    for(var i=0;i < circles.length; i++){
+        circles[i].fillColor.hue += 1;
+        circles[i].scale(0.9); 
+    }
+    
+}
+
+
+
+            
+    </script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
